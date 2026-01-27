@@ -1,17 +1,27 @@
 package br.com.felipemenezes.vacancy_manager.modules.candidate;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.validator.constraints.Length;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Data // Data diz pro lombok fazer getters e setters pra todos os dados da classe
+@Entity(name="candidate") // nome da tabela
 public class CandidateEntity {
+
+    @Id // unique id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     private String nome;
 
     @NotBlank()
@@ -23,6 +33,9 @@ public class CandidateEntity {
 
     @Length(min = 10, max= 100)
     private String password;
+
+    @CreationTimestamp
+    private LocalDateTime createdAt;
 
     private String description;
     private String curriculum;

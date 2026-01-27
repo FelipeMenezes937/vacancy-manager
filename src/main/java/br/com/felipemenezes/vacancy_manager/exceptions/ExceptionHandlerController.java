@@ -21,6 +21,7 @@ public class ExceptionHandlerController {
 
     }
     
+    @SuppressWarnings("null")
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<List<ErrorMessageDTO>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
         List<ErrorMessageDTO> dto = new ArrayList<>();// array onde vão estar os error messages
