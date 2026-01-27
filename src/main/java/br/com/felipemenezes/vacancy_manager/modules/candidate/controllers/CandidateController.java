@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.felipemenezes.vacancy_manager.modules.candidate.CandidateEntity;
 import jakarta.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -14,9 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 @RequestMapping("/candidate")
 public class CandidateController {
 
+    @Autowired
+    private CandidateRepository candidateRepository;
+
     @PostMapping("/")
-    public String create(@Valid @RequestBody CandidateEntity candidateEntity){
-        System.out.println("candidato:" + candidateEntity.getNome());
-        return "usuario: " + candidateEntity.getNome();
+    public CandidateEntity create(@Valid @RequestBody CandidateEntity candidateEntity){
+        return this.candidateRepository.save(candidateEntity);
+        
     }
 }
