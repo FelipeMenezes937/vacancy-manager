@@ -26,7 +26,7 @@ public class JobEntity {
   private String level;
 
   @ManyToOne() // pq eu posso ter muitos jobs para 1 company
-  @JoinColumn(name = "company_id")
+  @JoinColumn(name = "company_id", insertable = false, updatable = false)// o orm entende que vou utilizar para manipulacoes de dados
   private CompanyEntity companyEntity;
 
   @Column(name = "company_id")
