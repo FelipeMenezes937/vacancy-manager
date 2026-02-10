@@ -32,7 +32,7 @@ public class JobEntity {
   @JoinColumn(name = "company_id", insertable = false, updatable = false)// o orm entende que vou utilizar para manipulacoes de dados
   private CompanyEntity companyEntity;
 
-  @Column(name = "company_id")
+  @Column(name = "company_id", nullable = false)
   private UUID company_id;
 
   @CreationTimestamp
